@@ -10,7 +10,18 @@ namespace CrazyThreading
     {
         static void Main(string[] args)
         {
-            RunNoThreading();
+            RunCrazyPC();
+        }
+
+        static void RunCrazyPC()
+        {
+            ThreadingSamples.CrazyPC.CrazyFunctionCall();
+        }
+
+        static void RunThreadingSampleOne()
+        {
+            ThreadingSamples.ThreadingSampleOne.DemoThread();
+            
         }
 
         static void RunNoThreading()
