@@ -10,6 +10,12 @@ namespace CrazyThreading
     {
         static void Main(string[] args)
         {
+            RunNoThreading();
+        }
+
+        static void RunNoThreading()
+        {
+            ThreadingSamples.NoThreading.NoThreadHere();
         }
     }
 }
