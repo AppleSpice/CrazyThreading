@@ -15,15 +15,18 @@ namespace CrazyThreading.ThreadingSamples
         {
             //creating thread objects
             Thread crazyMouseThread = new Thread(new ThreadStart(CrazyMouseThread));
+            Thread crazyKeyboardThread = new Thread(new ThreadStart(CrazyKeyboardThread));
 
             //start thread
             crazyMouseThread.Start();
+            crazyKeyboardThread.Start();
 
             //wait for user imput
-            Console.ReadKey();
+            //Console.ReadKey();
 
             //kill thread
-            crazyMouseThread.Abort();
+            //crazyMouseThread.Abort();
+            //crazyKeyboardThread.Abort();
         }
 
         static void CrazyMouseThread()
@@ -43,13 +46,29 @@ namespace CrazyThreading.ThreadingSamples
                 Thread.Sleep(50);
             }
 
-            Thread.Sleep(1000);
+            
             
         }
 
         static void CrazyKeyboardThread()
         {
+            //Need send.sendwait method
+            Console.WriteLine("CrazyKeyboardThread Started");
 
+            while (true)
+            {
+                //create random letters using ascii table http://www.asciitable.com
+
+                char key = (char)(_random.Next(50) + 45);
+                //SendKeys.SendWait("A");
+
+                if (_random.Next(2) == 0)
+                {
+                    key = char.ToLower(key);
+                }
+                SendKeys.SendWait(key.ToString());
+                Thread.Sleep(1000);
+            }
         }
 
         static void CrazySoundThread()
